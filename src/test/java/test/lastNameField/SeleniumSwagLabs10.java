@@ -1,4 +1,4 @@
-package test.firstNameField;
+package test.lastNameField;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,10 +10,9 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-//Test case when user enter 15 or more characters for first name
+//Test case when user enter input with numbers for last name
 
-
-public class SeleniumSwagLabs6 {
+public class SeleniumSwagLabs10 {
     WebDriver driver;
     String title;
     WebElement element;
@@ -63,12 +62,11 @@ public class SeleniumSwagLabs6 {
         element.click();
     }
 
-    public boolean haveLessThan10Chars(String fname) {
-        int size = fname.length();
-        if (size <= 15) {
-            return true;
-        } else {
+    public boolean haveLessThan10Chars(String lname) {
+        if (lname.matches(".*[0-9].*")) {
             return false;
+        } else {
+            return true;
         }
     }
 
@@ -80,15 +78,15 @@ public class SeleniumSwagLabs6 {
         WebElement fName = driver.findElement(By.xpath("//*[@id=\"first-name\"]"));
         WebElement lName = driver.findElement(By.xpath("//*[@id=\"last-name\"]"));
         WebElement zip = driver.findElement(By.xpath("//*[@id=\"postal-code\"]"));
-        String firstname = "JOHnnnnnnnnnnnnnn";
-        String lastName = "Doe";
+        String firstname = "John";
+        String lastName = "Doe23";
         String zipCode = "11000";
         fName.sendKeys(firstname);
         lName.sendKeys(lastName);
         zip.sendKeys(zipCode);
         element.click();
-        boolean actual = haveLessThan10Chars(firstname);
+        boolean actual = haveLessThan10Chars(lastName);
         boolean expected = true;
-        Assert.assertEquals(actual, expected, "First name can't have more than 15 characters");
+        Assert.assertEquals(actual, expected, "Last name can't have numbers");
     }
 }
