@@ -1,4 +1,4 @@
-package test.zipField;
+package test.firstNameField;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,10 +10,9 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-//Test case when user enter number with more than 5 digits for zip
+//Test case when user enter input with numbers for first name
 
-
-public class SeleniumSwagLabs4 {
+public class SeleniumSwagLabs7 {
     WebDriver driver;
     String title;
     WebElement element;
@@ -63,13 +62,11 @@ public class SeleniumSwagLabs4 {
         element.click();
     }
 
-    public boolean haveFiveNum(int zip) {
-        String txt = String.valueOf(zip);
-        int size = txt.length();
-        if (size == 5) {
-            return true;
-        } else {
+    public boolean haveLessThan10Chars(String fname) {
+        if (fname.matches(".*[0-9].*")) {
             return false;
+        } else {
+            return true;
         }
     }
 
@@ -81,18 +78,15 @@ public class SeleniumSwagLabs4 {
         WebElement fName = driver.findElement(By.xpath("//*[@id=\"first-name\"]"));
         WebElement lName = driver.findElement(By.xpath("//*[@id=\"last-name\"]"));
         WebElement zip = driver.findElement(By.xpath("//*[@id=\"postal-code\"]"));
-        String firstname = "John";
+        String firstname = "someone324";
         String lastName = "Doe";
-        String zipCode = "111000";
+        String zipCode = "11000";
         fName.sendKeys(firstname);
         lName.sendKeys(lastName);
         zip.sendKeys(zipCode);
         element.click();
-        int value = Integer.parseInt(zipCode);
-        boolean actual = haveFiveNum(value);
+        boolean actual = haveLessThan10Chars(firstname);
         boolean expected = true;
-        Assert.assertEquals(actual, expected, "Zip can't have more than 5 digits");
+        Assert.assertEquals(actual, expected, "First name can't have numbers");
     }
 }
-
-

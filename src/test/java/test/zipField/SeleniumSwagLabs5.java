@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+//Test case when user enter text value for zip
 public class SeleniumSwagLabs5 {
     WebDriver driver;
     String title;
@@ -88,6 +89,6 @@ public class SeleniumSwagLabs5 {
         int value = Integer.parseInt(zipCode);
         boolean actual = haveFiveNum(value);
         boolean expected = true;
-        Assert.assertEquals(expected, actual, "Zip can't be text");
+        Assert.assertEquals(actual, expected, "Zip can't be text");
     }
 }
