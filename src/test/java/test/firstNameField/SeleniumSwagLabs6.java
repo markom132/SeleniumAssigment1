@@ -19,7 +19,7 @@ public class SeleniumSwagLabs6 {
     WebElement element;
 
     @BeforeTest
-    public void se() {
+    public void setup() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\markodm\\Downloads\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
